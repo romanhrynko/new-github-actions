@@ -1,4 +1,4 @@
-name: Test Project
+name: Deploy Project
 on: push
 jobs:
   test:
@@ -10,3 +10,5 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
+  deploy:
+    runs-on: ubuntu-latest
