@@ -8,4 +8,4 @@ jobs:
       - name: Output information
         run: |
           echo "The issue title is: ${{ github.event.issue.title }}"
-          echo "The issue body is: ${{ github.event.issue.body }}"
+          echo "The issue body is: ${{ github.event }}"
