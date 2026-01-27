@@ -7,5 +7,5 @@ jobs:
     steps:
       - name: Output information
         run: |
-          echo "The issue title is: ${{ github.event.issue.title }}"
-          echo "The issue body is: ${{ github.event }}"
+          echo "The issue title is: ${{ toJSON(github.event.issue.title) }}"
+          echo "The issue body is: ${{ toJSON(github.event) }}"
