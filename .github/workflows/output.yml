@@ -6,6 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |
-          echo "The issue title is: ${{ toJSON(github.event.issue.title) }}"
-          echo "The issue body is: ${{ toJSON(github.event) }}"
+        run: echo "${{ toJSON(github.event) }}"
