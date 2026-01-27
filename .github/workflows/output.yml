@@ -6,4 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: echo "${{ toJSON(github.event) }}"
+        run: |
+          cat <<'EOF'
+          ${{ toJSON(github.event) }}
+          EOF
