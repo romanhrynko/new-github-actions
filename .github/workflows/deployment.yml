@@ -1,5 +1,8 @@
 name: Deploy Project
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,7 +15,14 @@ jobs:
         run: npm run lint
       - name: Run tests
         run: npm test
-  deploy:
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: |
+            dist
+            package.json
+  build:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -22,5 +32,9 @@ jobs:
         run: npm ci
       - name: Build project
         run: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to Server
         run: echo "Deploying to server..."
